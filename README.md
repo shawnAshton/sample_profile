@@ -12,7 +12,7 @@ acts like a profile page
     flutter doctor --android-licenses
 
 3.  https://developer.android.com/studio
-    Get android studio
+    Get android studio 
 
 4.  install flutter plugin (in configurations in android studio before a project is opened)
 
