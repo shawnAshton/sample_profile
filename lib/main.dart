@@ -21,12 +21,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// This ensures that focus will not happen if this focusNode is assigned
-class AlwaysDisabledFocusNode extends FocusNode {
-  @override
-  bool get hasFocus => false;
-}
-
 /// the stateful widget of my app
 class Profile extends StatefulWidget {
   @override
@@ -362,4 +356,24 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    _nameController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _phoneController.dispose();
+    _emailController.dispose();
+    _bioController.dispose();
+    _noFocus.dispose();
+    super.dispose();
+  }
+}
+
+/// This ensures that focus will not happen if this focusNode is assigned
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
 }
