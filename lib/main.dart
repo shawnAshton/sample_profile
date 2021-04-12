@@ -359,7 +359,7 @@ class _ProfileState extends State<Profile> {
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is removed from the
+    // Clean up the controllers when the widget is removed from the
     // widget tree.
     _nameController.dispose();
     _firstNameController.dispose();
