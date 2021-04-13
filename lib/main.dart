@@ -125,6 +125,7 @@ class _ProfileState extends State<Profile> {
                       padding: EdgeInsets.all(3.0),
                       width: 175.0,
                       child: TextField(
+                        autofocus: true,
                         controller: _firstNameController,
                         onChanged: _nameChanged,
                         decoration: InputDecoration(
@@ -178,6 +179,7 @@ class _ProfileState extends State<Profile> {
                       padding: EdgeInsets.all(3.0),
                       width: 300.0,
                       child: TextField(
+                          autofocus: true,
                           controller: _phoneController,
                           onChanged: _textFieldChanged,
                           decoration: InputDecoration(
@@ -217,6 +219,7 @@ class _ProfileState extends State<Profile> {
                       padding: EdgeInsets.all(3.0),
                       width: 300.0,
                       child: TextField(
+                          autofocus: true,
                           controller: _emailController,
                           onChanged: _textFieldChanged,
                           decoration: InputDecoration(
@@ -258,6 +261,7 @@ class _ProfileState extends State<Profile> {
                     child: Container(
                         padding: EdgeInsets.all(10.0),
                         child: TextField(
+                            autofocus: true,
                             minLines: 2,
                             maxLines: 6,
                             controller: _bioController,
@@ -359,7 +363,7 @@ class _ProfileState extends State<Profile> {
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is removed from the
+    // Clean up the controllers when the widget is removed from the
     // widget tree.
     _nameController.dispose();
     _firstNameController.dispose();
