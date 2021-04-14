@@ -96,54 +96,61 @@ class _ProfileState extends State<Profile> {
   void _editNameScreen() {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
-      // gesture detector used to remove focus from keyboard or other input
-      // field when tapping away from it
-      return GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+      // will pop scope used to close keyboard before pop. avoids render issues
+      return WillPopScope(
+        onWillPop: () async {
+          FocusScope.of(context).requestFocus(FocusNode());
+          return true;
         },
-        child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text("Edit Name"),
-          ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20.0, horizontal: 0.0),
-                child: Text(
-                  "What's your name?",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+        // gesture detector used to remove focus from keyboard or other input
+        // field when tapping away from it
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: Text("Edit Name"),
+            ),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 20.0, horizontal: 0.0),
+                  child: Text(
+                    "What's your name?",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                      padding: EdgeInsets.all(3.0),
-                      width: 175.0,
-                      child: TextField(
-                        autofocus: true,
-                        controller: _firstNameController,
-                        onChanged: _nameChanged,
-                        decoration: InputDecoration(
-                            labelText: "FirstName",
-                            border: OutlineInputBorder()),
-                      )),
-                  Container(
-                      width: 175.0,
-                      child: TextField(
-                        controller: _lastNameController,
-                        onChanged: _nameChanged,
-                        decoration: InputDecoration(
-                            labelText: "LastName",
-                            border: OutlineInputBorder()),
-                      ))
-                ],
-              ),
-            ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                        padding: EdgeInsets.all(3.0),
+                        width: 175.0,
+                        child: TextField(
+                          autofocus: true,
+                          controller: _firstNameController,
+                          onChanged: _nameChanged,
+                          decoration: InputDecoration(
+                              labelText: "FirstName",
+                              border: OutlineInputBorder()),
+                        )),
+                    Container(
+                        width: 175.0,
+                        child: TextField(
+                          controller: _lastNameController,
+                          onChanged: _nameChanged,
+                          decoration: InputDecoration(
+                              labelText: "LastName",
+                              border: OutlineInputBorder()),
+                        ))
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -154,38 +161,46 @@ class _ProfileState extends State<Profile> {
   void _editPhoneNumberScreen() {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
-      // gesture detector used to remove focus from keyboard or other input
-      // field when tapping away from it
-      return GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+      // will pop scope used to close keyboard before pop. avoids render issues
+      return WillPopScope(
+        onWillPop: () async {
+          FocusScope.of(context).requestFocus(FocusNode());
+          return true;
         },
-        child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text("Edit Phone"),
-            ),
-            body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20.0, horizontal: 0.0),
-                child: Text(
-                  "What's your phone number?",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
+        // gesture detector used to remove focus from keyboard or other input
+        // field when tapping away from it
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: Scaffold(
+              appBar: AppBar(
+                centerTitle: true,
+                title: Text("Edit Phone"),
               ),
-              Center(
-                  child: Container(
-                      padding: EdgeInsets.all(3.0),
-                      width: 300.0,
-                      child: TextField(
-                          autofocus: true,
-                          controller: _phoneController,
-                          onChanged: _textFieldChanged,
-                          decoration: InputDecoration(
-                              labelText: "Your phone number",
-                              border: OutlineInputBorder()))))
-            ])),
+              body:
+                  Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 20.0, horizontal: 0.0),
+                  child: Text(
+                    "What's your phone number?",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  ),
+                ),
+                Center(
+                    child: Container(
+                        padding: EdgeInsets.all(3.0),
+                        width: 300.0,
+                        child: TextField(
+                            autofocus: true,
+                            controller: _phoneController,
+                            onChanged: _textFieldChanged,
+                            decoration: InputDecoration(
+                                labelText: "Your phone number",
+                                border: OutlineInputBorder()))))
+              ])),
+        ),
       );
     }));
   }
@@ -194,38 +209,46 @@ class _ProfileState extends State<Profile> {
   void _editEmailScreen() {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
-      // gesture detector used to remove focus from keyboard or other input
-      // field when tapping away from it
-      return GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+      // will pop scope used to close keyboard before pop. avoids render issues
+      return WillPopScope(
+        onWillPop: () async {
+          FocusScope.of(context).requestFocus(FocusNode());
+          return true;
         },
-        child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text("Edit Email"),
-            ),
-            body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20.0, horizontal: 0.0),
-                child: Text(
-                  "What's your email?",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
+        // gesture detector used to remove focus from keyboard or other input
+        // field when tapping away from it
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: Scaffold(
+              appBar: AppBar(
+                centerTitle: true,
+                title: Text("Edit Email"),
               ),
-              Center(
-                  child: Container(
-                      padding: EdgeInsets.all(3.0),
-                      width: 300.0,
-                      child: TextField(
-                          autofocus: true,
-                          controller: _emailController,
-                          onChanged: _textFieldChanged,
-                          decoration: InputDecoration(
-                              labelText: "Your email address",
-                              border: OutlineInputBorder()))))
-            ])),
+              body:
+                  Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 20.0, horizontal: 0.0),
+                  child: Text(
+                    "What's your email?",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  ),
+                ),
+                Center(
+                    child: Container(
+                        padding: EdgeInsets.all(3.0),
+                        width: 300.0,
+                        child: TextField(
+                            autofocus: true,
+                            controller: _emailController,
+                            onChanged: _textFieldChanged,
+                            decoration: InputDecoration(
+                                labelText: "Your email address",
+                                border: OutlineInputBorder()))))
+              ])),
+        ),
       );
     }));
   }
@@ -234,43 +257,52 @@ class _ProfileState extends State<Profile> {
   void _editBio() {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
-      // gesture detector used to remove focus from keyboard or other input
-      // field when tapping away from it
-      return GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+      // will pop scope used to close keyboard before pop. avoids render issues
+      return WillPopScope(
+        onWillPop: () async {
+          FocusScope.of(context).requestFocus(FocusNode());
+          return true;
         },
-        child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text("Edit Personal Story"),
-            ),
-            // single child scroll view to mitigate render flex issues.
-            body: SingleChildScrollView(
-              child:
-                  Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 20.0, horizontal: 40.0),
-                  child: Text(
-                    "What Type of Passenger are you?",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                  ),
-                ),
-                Center(
-                    child: Container(
-                        padding: EdgeInsets.all(10.0),
-                        child: TextField(
-                            autofocus: true,
-                            minLines: 2,
-                            maxLines: 6,
-                            controller: _bioController,
-                            onChanged: _textFieldChanged,
-                            decoration: InputDecoration(
-                                labelText: "Tell us about yourself",
-                                border: OutlineInputBorder()))))
-              ]),
-            )),
+        // gesture detector used to remove focus from keyboard or other input
+        // field when tapping away from it
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: Scaffold(
+              appBar: AppBar(
+                centerTitle: true,
+                title: Text("Edit Personal Story"),
+              ),
+              // single child scroll view to mitigate render flex issues.
+              body: SingleChildScrollView(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 40.0),
+                        child: Text(
+                          "What Type of Passenger are you?",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
+                        ),
+                      ),
+                      Center(
+                          child: Container(
+                              padding: EdgeInsets.all(10.0),
+                              child: TextField(
+                                  autofocus: true,
+                                  minLines: 2,
+                                  maxLines: 6,
+                                  controller: _bioController,
+                                  onChanged: _textFieldChanged,
+                                  decoration: InputDecoration(
+                                      labelText: "Tell us about yourself",
+                                      border: OutlineInputBorder()))))
+                    ]),
+              )),
+        ),
       );
     }));
   }
